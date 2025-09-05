@@ -1,0 +1,18 @@
+# Comandos Docker mais utilizados
+
+docker login
+docker --version                # Verifica a versão do Docker instalada
+docker pull <imagem>            # Baixa uma imagem do Docker Hub
+docker images                   # Lista imagens disponíveis localmente
+docker run <imagem>             # Executa um container a partir de uma imagem
+docker ps                       # Lista containers em execução
+docker ps -a                    # Lista todos os containers (inclusive parados)
+docker stop <container>         # Para um container em execução
+docker start <container>        # Inicia um container parado
+docker rm <container>           # Remove um container
+docker rmi <imagem>             # Remove uma imagem
+docker exec -it <container> bash # Acessa o terminal do container
+docker logs <container>         # Exibe os logs do container
+docker build -t <nome>:<tag> .  # Cria uma imagem a partir de um Dockerfile
+docker-compose up               # Sobe os serviços definidos no docker-compose.yml
+docker-compose down             # Para e remove os serviços do docker-compose.yml
