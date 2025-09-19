@@ -2,9 +2,20 @@
 
 docker login
 docker --version                # Verifica a versão do Docker instalada
+
+docker build -t <nome>:<tag> .  # Cria uma imagem a partir de um Dockerfile
+docker build -t henriqueddl/k8s:1.0.0 .
+
+docker run <imagem>             # Executa um container a partir de uma imagem
+docker run --name k8s-v1 -d -p 8085:8080 henriqueddl/k8s:1.0.0
+
+docker push                    # para subir para o reposítório do docker hub
+docker push henriqueddl/k8s:1.0.0
+
+
 docker pull <imagem>            # Baixa uma imagem do Docker Hub
 docker images                   # Lista imagens disponíveis localmente
-docker run <imagem>             # Executa um container a partir de uma imagem
+
 docker ps                       # Lista containers em execução
 docker ps -a                    # Lista todos os containers (inclusive parados)
 docker stop <container>         # Para um container em execução
@@ -13,6 +24,6 @@ docker rm <container>           # Remove um container
 docker rmi <imagem>             # Remove uma imagem
 docker exec -it <container> bash # Acessa o terminal do container
 docker logs <container>         # Exibe os logs do container
-docker build -t <nome>:<tag> .  # Cria uma imagem a partir de um Dockerfile
+
 docker-compose up               # Sobe os serviços definidos no docker-compose.yml
 docker-compose down             # Para e remove os serviços do docker-compose.yml
