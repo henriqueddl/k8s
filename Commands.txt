@@ -1,0 +1,56 @@
+# Comandos Docker mais utilizados
+docker login
+docker --version                # Verifica a versão do Docker instalada
+docker build -t <nome>:<tag> .  # Cria uma imagem a partir de um Dockerfile
+docker build -t henriqueddl/k8s:1.0.0 .
+docker run <imagem>             # Executa um container a partir de uma imagem
+docker run --name k8s-v1 -d -p 8085:8080 henriqueddl/k8s:1.0.0
+docker push                    # para subir para o reposítório do docker hub
+docker push henriqueddl/k8s:1.0.0
+docker pull <imagem>            # Baixa uma imagem do Docker Hub
+docker images                   # Lista imagens disponíveis localmente
+docker ps                       # Lista containers em execução
+docker ps -a                    # Lista todos os containers (inclusive parados)
+docker stop <container>         # Para um container em execução
+docker start <container>        # Inicia um container parado
+docker rm <container>           # Remove um container
+docker rmi <imagem>             # Remove uma imagem
+docker exec -it <container> bash # Acessa o terminal do container
+docker logs <container>         # Exibe os logs do container
+docker-compose up               # Sobe os serviços definidos no docker-compose.yml
+docker-compose down             # Para e remove os serviços do docker-compose.yml
+
+
+winget install Kubernetes.kind -instalar kind k8s
+
+# Comandos Kind mais utilizados
+kind create cluster                      # Cria um novo cluster Kubernetes local
+kind create cluster --name clu-k8s --config .\kind-cluster-config.yaml   # Cria um cluster usando um arquivo de configuração
+kind get clusters                        # Lista os clusters Kind existentes
+kind delete cluster --name <nome>        # Remove um cluster Kind
+kind export kubeconfig --name <nome>     # Exporta o kubeconfig do cluster Kind
+kind load docker-image <imagem> --name <nome> # Carrega uma imagem Docker local para o cluster Kind
+
+
+# Comandos Kubernetes mais utilizados
+kubectl create namespace ns-k8s
+kubectl config set-context --current --namespace=<novo-namespace>
+kubectl create deployment dpl-k8s --image=docker.io/henriqueddl/k8s:1.0.0 -n ns-k8s
+kubectl get pods                       # Lista todos os pods
+kubectl get services                   # Lista todos os serviços
+kubectl get deployments                # Lista todos os deployments
+kubectl get nodes                      # Lista todos os nodes do cluster
+kubectl describe pod <nome-do-pod>     # Mostra detalhes de um pod
+kubectl logs <nome-do-pod>             # Exibe os logs de um pod
+kubectl exec -it <nome-do-pod> -- bash # Acessa o terminal de um pod
+kubectl apply -f <arquivo.yaml>        # Aplica configurações de um arquivo YAML
+kubectl delete -f <arquivo.yaml>       # Remove recursos definidos em um arquivo YAML
+kubectl scale deployment <nome> --replicas=<n> # Altera o número de réplicas de um deployment
+kubectl expose deployment <nome> --type=LoadBalancer --port=<porta> # Expõe um deployment como serviço
+kubectl expose deployment dpl-k8s --type=ClusterIP --port=8080 -n ns-k8s
+kubectl rollout restart deployment <nome> # Reinicia o deployment
+kubectl edit deployment <nome>         # Edita o deployment diretamente
+kubectl get all                        # Lista todos os recursos
+kubectl config use-context <contexto>  # Troca o contexto do cluster
+kubectl config get-contexts
+
